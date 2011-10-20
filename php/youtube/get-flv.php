@@ -16,6 +16,6 @@ if ($vars['status'] == 'ok') {
 	$vars_fmt = array();
 	parse_str($vars['url_encoded_fmt_stream_map'], $vars_fmt);
 
-	print "FLV: {$vars_fmt['url']}";
+	print "WEBM: {$vars_fmt['url']}";
 } else 
 	print "Error: {$vars['reason']}";
