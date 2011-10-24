@@ -69,8 +69,6 @@ var Base64Binary = {
 			uarray = new Uint8Array(bytes);
 		
 		input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
-		console.log("Decoding bytes: ", input.length, bytes);
-	
 		
 		for (i=0; i<bytes; i+=3) {	
 			//get the 3 octects in 4 ascii chars
@@ -83,8 +81,6 @@ var Base64Binary = {
 			chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
 			chr3 = ((enc3 & 3) << 6) | enc4;
 	
-			//console.log("DC: ", i, j, chr1, chr2, chr3, enc1, enc2, enc3, enc4);
-			
 			uarray[i] = chr1;			
 			if (enc3 != 64) uarray[i+1] = chr2;
 			if (enc4 != 64) uarray[i+2] = chr3;
