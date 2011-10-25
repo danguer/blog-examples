@@ -169,16 +169,14 @@ $url_iframe_host = $url_iframe_host['host'];
 			resizeImage(file, file.type);
 		}
 		 
-	</script>
-	
+	</script>	
+</head>
+<body>
 	<!-- hiden frame -->
 	<iframe id="postMessageFrame" src="<?=$url_iframe?>">
 	</iframe>
 	
 	<h3>Upload Files</h3>
 	<input type="file" accept="image/*" onchange="uploadFile(this.files)">	
-</head>
-<body>
-<!-- this will only serve as a container for postmessage params -->
 </body>
 </html>
