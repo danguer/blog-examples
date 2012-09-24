@@ -41,7 +41,7 @@ var Base64Binary = {
 	
 	/* will return a  Uint8Array type */
 	decodeArrayBuffer: function(input) {
-		var bytes = Math.ceil( (3*input.length) / 4.0);
+		var bytes = (input.length/4) * 3;
 		var ab = new ArrayBuffer(bytes);
 		this.decode(input, ab);
 		
@@ -51,9 +51,9 @@ var Base64Binary = {
 	decode: function(input, arrayBuffer) {
 		//get last chars to see if are valid
 		var lkey1 = this._keyStr.indexOf(input.charAt(input.length-1));		 
-		var lkey2 = this._keyStr.indexOf(input.charAt(input.length-1));		 
+		var lkey2 = this._keyStr.indexOf(input.charAt(input.length-2));		 
 	
-		var bytes = Math.ceil( (3*input.length) / 4.0);
+		var bytes = (input.length/4) * 3;
 		if (lkey1 == 64) bytes--; //padding chars, so skip
 		if (lkey2 == 64) bytes--; //padding chars, so skip
 		
