@@ -44,15 +44,21 @@ var Base64Binary = {
 		
 		return ab;
 	},
-	
-	decode: function(input, arrayBuffer) {
+
+	removePaddingChars: function(input){
+		var lkey = this._keyStr.indexOf(input.charAt(input.length - 1));
+		if(lkey == 64){
+			return input.substring(0,input.length - 1);
+		}
+		return input;
+	},
+
+	decode: function (input, arrayBuffer) {
 		//get last chars to see if are valid
-		var lkey1 = this._keyStr.indexOf(input.charAt(input.length-1));		 
-		var lkey2 = this._keyStr.indexOf(input.charAt(input.length-2));		 
-	
-		var bytes = (input.length/4) * 3;
-		if (lkey1 == 64) bytes--; //padding chars, so skip
-		if (lkey2 == 64) bytes--; //padding chars, so skip
+		input = this.removePaddingChars(input);
+		input = this.removePaddingChars(input);
+
+		var bytes = parseInt((input.length / 4) * 3, 10);
 		
 		var uarray;
 		var chr1, chr2, chr3;
